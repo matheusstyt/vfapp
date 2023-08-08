@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vfapp/components/customListTile.dart';
 
 class VersaoAppPage extends StatelessWidget {
-  static String versao = 'V0.13';
+  static String versao = 'V0.15';
 
   late List<String> logVersoes = [];
 
@@ -11,6 +11,8 @@ class VersaoAppPage extends StatelessWidget {
   }
 
 /* Log de versoes
+0.15 - 2023-08-07 - Erro na rotina da alimentação, retornava nulo onde era string.
+0.14 - 2023-07-20 - Problema na rotina, da leitura do QR code na consulta de Materia Prima.
 0.13 - 2022-06-20 - Habilita configuração sequencial e uso de mascara para obtenção da quantidade
 0.12 - 2022-03-10 - inclusao de configuracao para habilitar teclado virtual como padrão
 0.11 - 2022-01-25 - Flex solicitou que se as informações das etiquetas esteiverem consistentes, a confirmação deve ser automática (alimenção/realimentação)
@@ -25,6 +27,10 @@ class VersaoAppPage extends StatelessWidget {
 0,1 - 2021-12-13 - primeira versao com todos os recursos do CF implementados.
  */
   void inicializaLogVersoes() {
+    logVersoes.add(
+        '0.15 - 2023-08-07 - Erro na rotina da alimentação, retornava nulo onde era string');
+    logVersoes.add(
+        '0.14 - 2023-07-20 - Problema na rotina, da leitura do QR code na consulta de Materia Prima');
     logVersoes.add(
         '0.13 - 2022-06-20 - Inclusão de configuração para habilitar alimentação sequencial');
     logVersoes.add(

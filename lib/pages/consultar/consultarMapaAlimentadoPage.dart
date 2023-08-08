@@ -174,6 +174,11 @@ class ConsultarMapaAlimentadoState extends State<ConsultarMapaAlimentadoPage> {
     if (dto.cdProduto.contains(text) || text.contains(dto.cdProduto)) {
       print('1.match ${dto.cdProduto} com $text}');
       retorno = true;
+    }else {
+      var subPA = text.substring(1, 5);
+      if(dto.cdPa.contains(subPA)){
+        retorno = true;
+      }
     }
 
 // trecho comentado pelo matheus galdino. problema do CF era :

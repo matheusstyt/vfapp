@@ -74,6 +74,7 @@ class AlimentacaoRest {
       AlimentacaoDTO alimentacaodto) async {
     final response;
     try {
+      print(alimentacaodto);
       response = await getResponseSetAlimentacao(alimentacaodto);
     } on Exception catch (_) {
       throw Exception('Erro conexão setAlimentacao');
@@ -145,6 +146,13 @@ class AlimentacaoDTO {
   AlimentacaoDTO(this.alimentacoes, this.cdUsr, this.cdPt, this.cdMapa);
 
   factory AlimentacaoDTO.fromJson(Map<String, dynamic> json) {
+    //0.15
+    if (json == null) {
+      // Tratar o caso em que o parâmetro json é nulo
+      // Por exemplo, pode retornar um objeto AlimentacaoDTO padrão ou lançar uma exceção
+      return AlimentacaoDTO([], '', '', ''); // Substitua os valores padrão conforme necessário
+    }
+
     List<RealimentacaoDTO> alimentacoes = [];
     dynamic alimentacoesAux = json['ompaproList']; // essa tag vem do REST
     if (alimentacoesAux == null)
@@ -174,8 +182,13 @@ class AlimentacaoDTO {
 
       alimentacoes.add(realimentacao);
     }
+    // bug fix, 0.15, tratar o null
     AlimentacaoDTO retorno = new AlimentacaoDTO(
-        alimentacoes, json['cdUsr'], json['cdPt'], json['cdMapa']);
+        alimentacoes,
+        json['cdUsr'] ?? "",
+        json['cdPt'] ?? "",
+        json['cdMapa'] ?? ""
+    );
 
     return retorno;
   }
